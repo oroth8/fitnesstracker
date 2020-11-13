@@ -39,7 +39,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-// require('./routes/api-routes')(app);
+require('./routes/api-routes')(app);
 require("./routes/html-routes")(app);
 
 
