@@ -8,7 +8,6 @@ const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session)
 
-const db = require("./models/Workout");
 
 // Load config
 dotenv.config({path: './config/config.env'})
@@ -40,8 +39,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-// require("./routes/api-routes")(app);
-// require("./routes/html-routes")(app);
+// require('./routes/api-routes')(app);
+require("./routes/html-routes")(app);
 
 
 const PORT = process.env.PORT || 8080
