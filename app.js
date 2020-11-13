@@ -8,6 +8,7 @@ const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session)
 
+const db = require("./models/Workout");
 
 // Load config
 dotenv.config({path: './config/config.env'})
@@ -16,6 +17,8 @@ const connectDB = require('./config/db');
 connectDB();
 
 const app = express();
+
+app.use(morgan("dev"));
 
 // // handlebars
 // app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -37,7 +40,9 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-// app.use('/', require('./routes/index'));
+// require("./routes/api-routes")(app);
+// require("./routes/html-routes")(app);
+
 
 const PORT = process.env.PORT || 8080
 
